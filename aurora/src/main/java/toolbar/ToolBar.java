@@ -9,6 +9,6 @@ public class ToolBar extends JToolBar{
 	
 	public ToolBar() {
 		demoButton = new JButton("copy");
-		this.add(demoButton);
+		//this.add(demoButton);
 	}
 }

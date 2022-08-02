@@ -1,7 +1,7 @@
 # aurora
 aurora is a minimal code editor written in java.
 
-![](snaps/aurora_snap01.jpg)
+![aurora](snaps/aurora_snap01.jpg)
 # How to run
 ```
 gradlew run

@@ -55,7 +55,8 @@ public class SyntaxTextArea extends RSyntaxTextArea{
 		//auto complete test
 		this.changeStyleViaThemeXml();
 	    this.setCodeFoldingEnabled(true);
-		this.setBackground(new Color(60, 63, 65));
+		this.setBackground(new Color(43, 43, 43));
+		//this.setBackground();
 		this.changeStyleProgrammatically();
 	}
 	

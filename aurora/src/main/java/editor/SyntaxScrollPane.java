@@ -1,6 +1,6 @@
 package editor;
 
-import java.awt.Font;
+import java.awt.*;
 import java.io.File;
 
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -26,10 +26,11 @@ public class SyntaxScrollPane extends RTextScrollPane{
 		lineListener = new LineListener(window);
 		Font font = new FontManager().getFont(Value.REGULAR);
 		gutter = this.getGutter();
-		gutter.setSize(gutter.getWidth()+5, gutter.getHeight());
+		gutter.setSize(gutter.getWidth()+20, gutter.getHeight());
 		gutter.setLineNumberFont(font);
 		gutter.setBorderColor(getBackground());
 		gutter.setFoldBackground(getBackground());
+		gutter.setBackground(new Color(49, 51, 53));
 		this.setLineNumbersEnabled(true);
 		textArea.addKeyListener(lineListener);
 		textArea.addMouseListener(lineListener);

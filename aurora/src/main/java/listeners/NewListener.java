@@ -132,15 +132,16 @@ public class NewListener implements ActionListener, MouseListener{
 	}
 	
 	private void configureButton(JButton btnClose) {
+		btnClose.putClientProperty("JButton.buttonProperty", "roundRect");
 		btnClose.setOpaque(false);
-		btnClose.setFont(new Font(btnClose.getFont().getFamily(), Font.BOLD, btnClose.getFont().getSize()));
-		btnClose.setForeground(Color.white);
-		btnClose.setBorder(BorderFactory.createEmptyBorder());
+//		btnClose.setFont(new Font(btnClose.getFont().getFamily(), Font.BOLD, btnClose.getFont().getSize()));
+//		btnClose.setForeground(Color.white);
+//		btnClose.setBorder(BorderFactory.createEmptyBorder());
 		btnClose.setFocusPainted(false);
-		btnClose.setBorderPainted(false);
+//		btnClose.setBorderPainted(false);
 		btnClose.setContentAreaFilled(false);
-		btnClose.setRolloverEnabled(false);
-		btnClose.addMouseListener(this);
+//		btnClose.setRolloverEnabled(false);
+//		btnClose.addMouseListener(this);
 		btnClose.setToolTipText("Close");
 	}
 }

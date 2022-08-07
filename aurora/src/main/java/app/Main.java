@@ -24,7 +24,7 @@ public class Main {
 		//	FlatDarculaLaf.setup();
 			//FlatDarkFlatIJTheme.setup();
 			FlatDarculaLaf.setup();
-			UIManager.put("TabbedPane.showTabSeparators", true);
+			UIManager.put("TabbedPane.showTabSeparators", false);
 			//UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
 			UIManager.put("TabbedPane.selectedBackground", new Color(0, 0, 0, 13));
 			UIManager.put("Component.focusWidth", 0);

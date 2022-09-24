@@ -50,4 +50,18 @@ jar {
     manifest {
         attributes 'Main-Class' : 'app.Main'
     }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    duplicatesStrategy = 'include'
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }

@@ -19,4 +19,7 @@ public interface Value {
 	public static final String CSS = "css";
 	public static final String JAVASCRIPT = "javascript";
 	public static final int ALPHA_VALUE = 30;
+
+	//Flat laf themes
+	public static final String themes[] = {"Darcula", "Dark", "Intellij"};
 }

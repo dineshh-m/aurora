@@ -20,9 +20,9 @@ public class FileExplorer extends JPanel implements ActionListener{
 
 	String dirPath;
 	File directory;
-	DefaultMutableTreeNode rootNode;
-	DefaultTreeModel model;
-	JTree tree;
+	public DefaultMutableTreeNode rootNode;
+	public DefaultTreeModel model;
+	public JTree tree;
 	JButton openFolder;
 	boolean fileOpened = false;
 	ClickListener clickListener;
@@ -47,7 +47,7 @@ public class FileExplorer extends JPanel implements ActionListener{
 			
 			if(f.isDirectory()) {
 				DefaultMutableTreeNode sub = new DefaultMutableTreeNode(f.getName());
-				sub.setAllowsChildren(true);      		//this line is not needed because it true by default but i added it for better recognition
+				sub.setAllowsChildren(true);      		//this line is not needed because it true by default but I added it for better recognition
 				root.add(sub);
 				displayFiles(sub, f);
 			}else if(f.isFile()) {
@@ -75,6 +75,7 @@ public class FileExplorer extends JPanel implements ActionListener{
 		}else {
 			
 		}
+		clickListener = null;
 		clickListener = new ClickListener(directory, tree, window);
 	}
 	
@@ -117,18 +118,41 @@ public class FileExplorer extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		openFolder();
-		if(directory != null) {
-			loadFiles();
-			this.remove(openFolder);
-			this.setLayout(new BorderLayout());
-			this.add(tree, BorderLayout.CENTER);
-			this.updateUI();
+		String actionCommand = e.getActionCommand();
+
+		if(actionCommand.equals("Open Folder")) {
+			openFolder();
+			if(directory != null) {
+				loadFiles();
+				this.remove(openFolder);
+				this.setLayout(new BorderLayout());
+				this.add(tree, BorderLayout.CENTER);
+				this.updateUI();
+			}
+		}else if(actionCommand.equals("Open folder")) {
+			openFolder();
+			if(directory != null) {
+				this.setNull();
+				loadFiles();
+
+				this.remove(openFolder);
+				this.setLayout(new BorderLayout());
+				this.add(tree, BorderLayout.CENTER);
+				this.updateUI();
+			}
 		}
+
 		
 	}
 	
 	public JTree getTree() {
 		return tree;
+	}
+
+	/*
+	this method for resetting the jtree i.e file explorer
+	 */
+	public void setNull() {
+		this.remove(tree);
 	}
 }

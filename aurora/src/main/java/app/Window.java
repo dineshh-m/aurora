@@ -15,11 +15,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.KeyStroke;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import editor.TabbedPane;
 import explorer.FileExplorer;
 import listeners.EditListener;
 import listeners.FileListener;
 import listeners.NewListener;
+import listeners.ThemeHandler;
 import statusbar.StatusBar;
 import toolbar.ToolBar;
 import values.Value;
@@ -27,12 +29,13 @@ import values.Value;
 public class Window extends JFrame{
 
 	JMenuBar menuBar;
-	JMenu file, edit, newItem, windowMenu, terminal, help;
-	JMenuItem  open, save, saveAs, newFile, newFolder;  //for File menu
+	JMenu file, edit, newItem, windowMenu, terminal, help, theme;
+	JMenuItem  open, openFolder, save, saveAs, newFile, newFolder;  //for File menu
+
 	JMenuItem cut, copy, paste;  //for Edit menu
 	JMenuItem showHideTerminal;
 	TabbedPane tabPane;
-	FileExplorer explorer;
+	public FileExplorer explorer;
 	boolean folderOpened = false;
 	NewListener newListener;
 	public ArrayList<JLabel> list;
@@ -41,6 +44,7 @@ public class Window extends JFrame{
 	StatusBar statusBar;
 	EditListener editListener;
 	ToolBar toolBar;
+	ThemeHandler themeHandler; //Handling themes via Theme menu
 	
 	
 	//temp
@@ -49,7 +53,7 @@ public class Window extends JFrame{
 	public Window() {
 		//Border layout
 		setLayout(new BorderLayout());
-		
+
 		int red = this.getBackground().getRed();
 		int green = this.getBackground().getGreen();
 		int blue = this.getBackground().getBlue();
@@ -66,7 +70,7 @@ public class Window extends JFrame{
 		statusBar = new StatusBar();
 		editListener = new EditListener(this, tabPane);
 		toolBar = new ToolBar();
-		
+		themeHandler = new ThemeHandler();
 		
 		
 		
@@ -79,6 +83,7 @@ public class Window extends JFrame{
 		//File menu items
 		newItem = createMenu(newItem, "New");
 		open = createMenuItem(open, "Open");
+		openFolder = createMenuItem(openFolder, "Open folder");
 		save = createMenuItem(save, "Save");
 		saveAs = createMenuItem(saveAs, "Save As");
 		
@@ -90,6 +95,7 @@ public class Window extends JFrame{
 		open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
 		
 		addListener(fileListener, save, saveAs);
+		addListener(explorer, openFolder); //adding the explorer as action listener beacuse of redundant code
 		
 		//sub menu for newItem
 		newFile = createMenuItem(newItem, "File");
@@ -111,12 +117,17 @@ public class Window extends JFrame{
 		cut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
 		copy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
 		paste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK));
-		
+
+		//window menu items
+		theme = createMenu(theme, "Theme");
+		inflateJMenuWithString(Value.themes, theme);
+		windowMenu.add(theme);
+
 		//terminal menu items
 		showHideTerminal = createMenuItem(showHideTerminal, "Show/Hide Terminal");
 				
 		//Inflate Menu
-		inflateMenu(file,  newItem, open, save, saveAs);  //File menu
+		inflateMenu(file,  newItem, open, openFolder, save, saveAs);  //File menu
 		inflateMenu(edit,  cut, copy, paste);  //Edit menu
 		inflateMenu(terminal, showHideTerminal); //Terminal Menu
 		
@@ -198,5 +209,15 @@ public class Window extends JFrame{
 	public StatusBar getStatusBar() {
 		return this.statusBar;
 	}
-	
+
+	//inflate the JMenu with the JMenuItem of string values
+	public void inflateJMenuWithString(String values[], JMenu menu) {
+		JMenuItem menuItem;
+
+		for(String value : values) {
+			menuItem = new JMenuItem(value);
+			menuItem.addActionListener(themeHandler);
+			menu.add(menuItem);
+		}
+	}
  }

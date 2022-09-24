@@ -27,6 +27,7 @@ public class FileExplorer extends JPanel implements ActionListener{
 	boolean fileOpened = false;
 	ClickListener clickListener;
 	Window window;
+	boolean folderOpened = false;
 	
 	public FileExplorer(Window window) {
 		this.window = window;
@@ -128,11 +129,13 @@ public class FileExplorer extends JPanel implements ActionListener{
 				this.setLayout(new BorderLayout());
 				this.add(tree, BorderLayout.CENTER);
 				this.updateUI();
+				folderOpened = true;
 			}
 		}else if(actionCommand.equals("Open folder")) {
 			openFolder();
 			if(directory != null) {
-				this.setNull();
+				if(folderOpened)
+					this.setNull();
 				loadFiles();
 
 				this.remove(openFolder);

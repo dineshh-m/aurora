@@ -142,6 +142,7 @@ public class FileExplorer extends JPanel implements ActionListener{
 				this.setLayout(new BorderLayout());
 				this.add(tree, BorderLayout.CENTER);
 				this.updateUI();
+                folderOpened = true;
 			}
 		}
 

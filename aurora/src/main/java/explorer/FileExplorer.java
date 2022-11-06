@@ -1,7 +1,6 @@
 package explorer;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -33,7 +32,7 @@ public class FileExplorer extends JPanel implements ActionListener{
 		this.window = window;
 		openFolder = new JButton("Open Folder");
 		openFolder.addActionListener(this);
-		
+//		this.setBackground(new Color(60, 56, 54));
 		
 		
 		this.add(openFolder);

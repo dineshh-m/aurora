@@ -34,6 +34,7 @@ public class Window extends JFrame{
 
 	JMenuItem cut, copy, paste;  //for Edit menu
 	JMenuItem showHideTerminal;
+	JMenuItem preferences;
 	TabbedPane tabPane;
 	public FileExplorer explorer;
 	boolean folderOpened = false;
@@ -119,9 +120,12 @@ public class Window extends JFrame{
 		paste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, InputEvent.CTRL_DOWN_MASK));
 
 		//window menu items
+		preferences = createMenuItem(preferences, "Preferences");
+
+		//window menu items
 		theme = createMenu(theme, "Theme");
 		inflateJMenuWithString(Value.themes, theme);
-		windowMenu.add(theme);
+	//	windowMenu.add(theme);
 
 		//terminal menu items
 		showHideTerminal = createMenuItem(showHideTerminal, "Show/Hide Terminal");
@@ -130,6 +134,7 @@ public class Window extends JFrame{
 		inflateMenu(file,  newItem, open, openFolder, save, saveAs);  //File menu
 		inflateMenu(edit,  cut, copy, paste);  //Edit menu
 		inflateMenu(terminal, showHideTerminal); //Terminal Menu
+		inflateMenu(windowMenu, theme, preferences);
 		
 		//inflate menu bar
 		inflateMenuBar(menuBar, file, edit, windowMenu, terminal, help);

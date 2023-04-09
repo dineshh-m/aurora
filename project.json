@@ -1,0 +1,16 @@
+{
+  "name": "aurora",
+  "version": 1.0,
+  "author": "Dinesh",
+  "src": "aurora/src/main/java",
+  "main": "app.Main",
+  "dependencies": {
+	"com.fifesoft:rsyntaxtextarea:3.3.1":"rsyntaxtextarea-3.3.1.jar",
+    "com.formdev:flatlaf:2.6": "flatlaf-2.6.jar",
+    "com.fifesoft:autocomplete:3.3.0": "autocomplete-3.3.0.jar",
+    "com.fifesoft:languagesupport:3.3.0": "languagesupport-3.3.0.jar",
+    "com.formdev:flatlaf-intellij-themes:2.0.2": "flatlaf-intellij-themes-2.0.2",
+    "com.formdev:flatlaf-extras:2.0.2": "flatlaf-extras-2.0.2"
+  },
+  "resources" : ["aurora/src/main/resources/"]
+}

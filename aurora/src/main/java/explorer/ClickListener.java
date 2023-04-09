@@ -1,10 +1,6 @@
 package explorer;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,20 +10,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTree;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
+import explorer.popup.ExplorerPopupMenu;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import com.formdev.flatlaf.icons.FlatClearIcon;
 
-import app.Icon;
 import app.Window;
 import editor.SyntaxScrollPane;
 import editor.SyntaxTextArea;
@@ -44,6 +37,8 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	SyntaxTextArea textArea;
 	SyntaxScrollPane scrollPane;
 	TabbedPane tabPane;
+
+
 	
 	public ClickListener(File directory, JTree tree, Window window) {
 		this.window = window;
@@ -72,7 +67,9 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.isPopupTrigger()) {
+			window.explorer.popupMenu.show(e.getComponent(), e.getX(), e.getY());
+		}
 	}
 
 	@Override
@@ -100,7 +97,10 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.isPopupTrigger()) {
+
+			window.explorer.popupMenu.show(e.getComponent(), e.getX(), e.getY());
+		}
 	}
 
 	@Override
@@ -136,7 +136,9 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 		scrollPane.setFile(file);
 		scrollPane.setIsSaved(true);
 		tabPane.addTab(title, scrollPane);
+
 		int index = tabPane.indexOfTab(title);
+
 		JPanel pnlTab = new JPanel(new GridBagLayout());
 		pnlTab.setOpaque(false);
 		JLabel lblTitle = new JLabel(title);
@@ -261,5 +263,24 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 				textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_GROOVY);
 				break;
 			}
+	}
+
+	public Image getIconByExtenion(String fileName) {
+		Image icon = null;
+		int lastIndex = fileName.lastIndexOf('.');
+		String extension = "";
+
+		if(lastIndex >= 0) extension = fileName.substring(lastIndex);
+
+		try {
+			switch(extension) {
+				case ".java":
+					icon = ImageIO.read(getClass().getResourceAsStream("/icons/java.png"));
+					break;
+			}
+		}catch(IOException ioe) {
+			System.out.println("IOException: "+ioe.getMessage());
+		}
+		return icon;
 	}
 }

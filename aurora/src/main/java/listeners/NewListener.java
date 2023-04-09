@@ -21,6 +21,7 @@ import app.Window;
 import editor.SyntaxScrollPane;
 import editor.SyntaxTextArea;
 import editor.TabbedPane;
+import explorer.FileExplorer;
 
 public class NewListener implements ActionListener, MouseListener{
 
@@ -89,6 +90,9 @@ public class NewListener implements ActionListener, MouseListener{
 		//	tabPane.setBackgroundAt(index, new Color(0, 0, 0, Value.ALPHA_VALUE));//temp code 
 			window.i++;
 			tabPane.setSelectedIndex(tabPane.getTabCount() - 1);
+		}else if(actionCommand.equals("Open folder")) {
+
+			window.explorer.actionPerformed(e);
 		}
 	}
 

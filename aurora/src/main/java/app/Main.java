@@ -11,6 +11,8 @@ import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatDarkFlatIJTheme;
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkContrastIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 
 //import com.formdev.flatlaf.FlatArcOrangeIJTheme;
 //import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatDraculaIJTheme;
@@ -23,7 +25,8 @@ public class Main {
 		//	UIManager.setLookAndFeel(new FlatDarculaLaf());
 		//	FlatDarculaLaf.setup();
 			//FlatDarkFlatIJTheme.setup();
-			FlatDarculaLaf.setup();
+			FlatArcDarkIJTheme.setup();
+			//FlatDarculaLaf.setup();
 			UIManager.put("TabbedPane.showTabSeparators", false);
 			//UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
 			UIManager.put("TabbedPane.selectedBackground", new Color(0, 0, 0, 13));

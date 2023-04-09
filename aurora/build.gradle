@@ -26,11 +26,11 @@ dependencies {
     implementation 'com.google.guava:guava:30.1.1-jre'
 
     //aurora dependencies
-    implementation 'com.fifesoft:rsyntaxtextarea:3.2.0'
-    implementation 'com.formdev:flatlaf:2.0.2'
+    implementation 'com.fifesoft:rsyntaxtextarea:3.3.1'
+    implementation 'com.formdev:flatlaf:2.6'
     //compileOnly 'com.formdev:flatlaf:2.4'
-    implementation 'com.fifesoft:autocomplete:3.2.0'
-    implementation 'com.fifesoft:languagesupport:3.1.4'
+    implementation 'com.fifesoft:autocomplete:3.3.0'
+    implementation 'com.fifesoft:languagesupport:3.3.0'
     implementation 'com.formdev:flatlaf-intellij-themes:2.0.2'
     implementation 'com.formdev:flatlaf-extras:2.0.2'
 

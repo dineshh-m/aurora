@@ -1,9 +1,7 @@
 package app;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -26,7 +24,7 @@ import statusbar.StatusBar;
 import toolbar.ToolBar;
 import values.Value;
 
-public class Window extends JFrame{
+public class Window extends JFrame implements WindowListener, WindowFocusListener {
 
 	JMenuBar menuBar;
 	JMenu file, edit, newItem, windowMenu, terminal, help, theme;
@@ -159,6 +157,7 @@ public class Window extends JFrame{
 		this.add(statusBar, BorderLayout.SOUTH);
 		this.add(toolBar, BorderLayout.NORTH);
 		//Initializing method should be called finally
+		this.addWindowFocusListener(this);
 		initWindow();
 	}
 	
@@ -225,4 +224,51 @@ public class Window extends JFrame{
 			menu.add(menuItem);
 		}
 	}
- }
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+
+	}
+
+	@Override
+	public void windowGainedFocus(WindowEvent e) {
+		explorer.refreshFileTree();
+		System.out.println("Gained focus");
+
+	}
+
+	@Override
+	public void windowLostFocus(WindowEvent e) {
+
+	}
+}

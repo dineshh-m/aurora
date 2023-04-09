@@ -30,7 +30,7 @@ public class SyntaxScrollPane extends RTextScrollPane{
 		gutter.setLineNumberFont(font);
 		gutter.setBorderColor(getBackground());
 		gutter.setFoldBackground(getBackground());
-		gutter.setBackground(new Color(60, 56, 54));
+		gutter.setBackground(textArea.getBackground());
 		this.setLineNumbersEnabled(true);
 		textArea.addKeyListener(lineListener);
 		textArea.addMouseListener(lineListener);

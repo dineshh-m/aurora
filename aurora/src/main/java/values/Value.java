@@ -6,10 +6,13 @@ public interface Value {
 	public static final String APP_TITLE = "Aurora";
 	
 	//font constants
-	public static final String REGULAR = "JetBrainsMono-Regular.ttf";
-	public static final String BOLD = "JetBrainsMono-Bold.ttf";
-	public static final String ITALIC = "JetBrainsMono-Italic.ttf";
-	
+//	public static final String REGULAR = "JetBrainsMono-Regular.ttf";
+//	public static final String BOLD = "JetBrainsMono-Bold.ttf";
+//	public static final String ITALIC = "JetBrainsMono-Italic.ttf";
+
+	public static final String REGULAR = "FiraCode-Regular.ttf";
+	public static final String BOLD = "FiraCode-Bold.ttf";
+	public static final String ITALIC = "FiraCode-Light.ttf";
 	//Icon png's
 	public static final String PYTHON = "python";
 	public static final String java = "java";

@@ -16,6 +16,7 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
+import explorer.popup.ExplorerPopupMenu;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import com.formdev.flatlaf.icons.FlatClearIcon;
@@ -36,6 +37,8 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	SyntaxTextArea textArea;
 	SyntaxScrollPane scrollPane;
 	TabbedPane tabPane;
+
+
 	
 	public ClickListener(File directory, JTree tree, Window window) {
 		this.window = window;
@@ -64,7 +67,9 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.isPopupTrigger()) {
+			window.explorer.popupMenu.show(e.getComponent(), e.getX(), e.getY());
+		}
 	}
 
 	@Override
@@ -92,7 +97,10 @@ public class ClickListener implements TreeSelectionListener, MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.isPopupTrigger()) {
+
+			window.explorer.popupMenu.show(e.getComponent(), e.getX(), e.getY());
+		}
 	}
 
 	@Override
